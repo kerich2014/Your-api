@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    margin: 2%;
+    text-align: center;
+    font-size: xxx-large;
+}
+
+input{
+    margin-right: 20px;
+    width: 150px;
+    height: 40px;
+    border-radius: 1rem;
+    font-size: x-large;
+}
+
+button{
+    height: 40px;
+    width: 50px;
+    font-size: x-large;
+    border-radius: 1rem;
+}
+
+#inputBlock{
+    margin: 5%;
+    text-align: center;
+}
+
+#apimage{
+    margin: 2%;
+    text-align: center;
+}
+
+#img{
+    height: 500px;
+    border-radius: 1rem;
+}
