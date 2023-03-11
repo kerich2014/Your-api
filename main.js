@@ -10,6 +10,7 @@ const inputBlock = document.querySelector('#inputBlock')
 const inputText = document.createElement('input')
 const inputButton = document.createElement('button')
 const uOutputBlock = document.createElement('div')
+const uOutputBlock1 = document.createElement('div')
 const body = document.querySelector('body')
 
     button.addEventListener('click', () => {
@@ -60,29 +61,64 @@ const body = document.querySelector('body')
             inputButton.textContent = 'Go'
             inputBlock.append(inputText, inputButton)
             uOutputBlock.classList.add('uOutputBlock')
-            body.appendChild(uOutputBlock)
-            inputButton.addEventListener('click', () => {
-                let inputTextValue = inputText.value
-                fetch(`http://universities.hipolabs.com/search?country=${inputTextValue}`)
-                .then(res => res.json())
-                .then(response => {
-                    console.log(response.length)
-                    console.log(response)
-                    for(let i = 0; i <= response.length; i++){
-                        const uBlock = document.createElement('div')
-                        const uWeb = document.createElement('a')
-                        const uName = document.createElement('h2')
-                        uBlock.append(uName)
-                        uBlock.append(uWeb)
-                        uName.innerHTML = response[i].name
-                        uWeb.innerHTML = response[i].web_pages[0]
-                        uWeb.href = response[i].web_pages[0]
-                        uOutputBlock.appendChild(uBlock)
-                        uBlock.classList.add('uBlock')
-                    }
-                    document.appendChild(uOutputBlock)
+            uOutputBlock1.classList.add('uOutputBlock')
+            let count = 0
+
+                inputButton.addEventListener('click', () => {
+                    if(count == 0){
+                    uOutputBlock1.remove()
+                    body.appendChild(uOutputBlock)
+                    let inputTextValue = inputText.value
+                    fetch(`http://universities.hipolabs.com/search?country=${inputTextValue}`)
+                    .then(res => res.json())
+                    .then(response => {
+                        console.log(response.length)
+                        console.log(response)
+                        for(let i = 0; i <= response.length; i++){
+                            const uBlock = document.createElement('div')
+                            const uWeb = document.createElement('a')
+                            const uName = document.createElement('h2')
+                            uBlock.append(uName)
+                            uBlock.append(uWeb)
+                            uName.innerHTML = response[i].name
+                            uWeb.innerHTML = response[i].web_pages[0]
+                            uWeb.href = response[i].web_pages[0]
+                            uOutputBlock.appendChild(uBlock)
+                            uBlock.classList.add('uBlock')
+                        }
+                        document.appendChild(uOutputBlock)
+                    })
+                    count++
+                    console.log(count)
+                }
+
+                else{
+                    uOutputBlock.remove()
+                    body.appendChild(uOutputBlock1)
+                    let inputTextValue = inputText.value
+                    fetch(`http://universities.hipolabs.com/search?country=${inputTextValue}`)
+                    .then(res => res.json())
+                    .then(response => {
+                        console.log(response.length)
+                        console.log(response)
+                        for(let i = 0; i <= response.length; i++){
+                            const uBlock = document.createElement('div')
+                            const uWeb = document.createElement('a')
+                            const uName = document.createElement('h2')
+                            uBlock.append(uName)
+                            uBlock.append(uWeb)
+                            uName.innerHTML = response[i].name
+                            uWeb.innerHTML = response[i].web_pages[0]
+                            uWeb.href = response[i].web_pages[0]
+                            uOutputBlock1.appendChild(uBlock)
+                            uBlock.classList.add('uBlock')
+                        }
+                        document.appendChild(uOutputBlock1)
+                    })
+                    count = 0
+                    console.log(count)
+            }
                 })
-            })
         }
     })
 
