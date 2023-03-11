@@ -55,3 +55,8 @@ select{
     border-radius: 1rem;
     border: 2px solid black;
 }
+
+#uOutputBlock{
+    display: grid;
+    grid-row: 3;
+}
