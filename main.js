@@ -9,7 +9,8 @@ const ipText = document.createElement('h2')
 const inputBlock = document.querySelector('#inputBlock')
 const inputText = document.createElement('input')
 const inputButton = document.createElement('button')
-const toAdd = document.createDocumentFragment()
+const uOutputBlock = document.createElement('div')
+const body = document.querySelector('body')
 
     button.addEventListener('click', () => {
     let date = document.querySelector('input').value
@@ -31,6 +32,9 @@ const toAdd = document.createDocumentFragment()
             button.remove()
             img.remove()
             dateInput.remove()
+            uOutputBlock.remove()
+            inputText.remove()
+            inputButton.remove()
             ipText.classList.add('h1')
             outputBlock.append(ipText)
             fetch('https://api.ipify.org?format=json')
@@ -55,10 +59,11 @@ const toAdd = document.createDocumentFragment()
             inputButton.classList.add('button')
             inputButton.textContent = 'Go'
             inputBlock.append(inputText, inputButton)
-            outputBlock.append(ipText)
-            let inputTextValue = inputText.value
+            uOutputBlock.classList.add('uOutputBlock')
+            body.appendChild(uOutputBlock)
             inputButton.addEventListener('click', () => {
-                fetch(`http://universities.hipolabs.com/search?country=Uzbekistan`)
+                let inputTextValue = inputText.value
+                fetch(`http://universities.hipolabs.com/search?country=${inputTextValue}`)
                 .then(res => res.json())
                 .then(response => {
                     console.log(response.length)
@@ -72,9 +77,10 @@ const toAdd = document.createDocumentFragment()
                         uName.innerHTML = response[i].name
                         uWeb.innerHTML = response[i].web_pages[0]
                         uWeb.href = response[i].web_pages[0]
-                        outputBlock.appendChild(uBlock)
+                        uOutputBlock.appendChild(uBlock)
+                        uBlock.classList.add('uBlock')
                     }
-                    document.appendChild(outputBlock)
+                    document.appendChild(uOutputBlock)
                 })
             })
         }
