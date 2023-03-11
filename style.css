@@ -10,6 +10,7 @@ h1{
 }
 
 input{
+    text-align: center;
     margin-right: 20px;
     width: 150px;
     height: 40px;
@@ -24,6 +25,20 @@ button{
     border-radius: 1rem;
 }
 
+button:hover{
+    background-color: aliceblue;
+}
+
+select{
+    text-align: center;
+    border: 2px solid black;
+    margin-right: 20px;
+    width: 150px;
+    height: 40px;
+    border-radius: 1rem;
+    font-size: x-large;
+}
+
 #inputBlock{
     margin: 5%;
     text-align: center;
@@ -36,5 +51,7 @@ button{
 
 #img{
     height: 500px;
+    min-width: 400px;
     border-radius: 1rem;
+    border: 2px solid black;
 }
